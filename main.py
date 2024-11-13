@@ -15,6 +15,7 @@ extra_profile_count=0 #if you have more profiles change 0 to your desired one
 preference = 1
 check_url="https://rewards.bing.com/"
 check_state=False
+user_name='your_user_name'
 
 print(logo)
 
@@ -56,7 +57,7 @@ if not check_state:
         edge_windows = [w for w in gw.getWindowsWithTitle('Edge') if w.isActive is False]
         time.sleep(0.5)
         print('Profile no : ',i)
-        profile_path = f"C:\\Users\\rosha\\AppData\\Local\\Microsoft\\Edge\\User Data\\Profile {i}"
+        profile_path = f"C:\\Users\\{user_name}\\AppData\\Local\\Microsoft\\Edge\\User Data\\Profile {i}"
         subprocess.Popen([edge_path, f"--user-data-dir={os.path.dirname(profile_path)}", f"--profile-directory=Profile {i}"])
 
 
@@ -68,7 +69,7 @@ if not check_state:
         time.sleep(1)
 
 
-    profile_path = r"C:\Users\rosha\AppData\Local\Microsoft\Edge\User Data\Default"
+    profile_path = f"C:\\Users\\{user_name}\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default"
     subprocess.run([edge_path, f"--user-data-dir={os.path.dirname(profile_path)}", f"--profile-directory={os.path.basename(profile_path)}"])
     edge_windows = [w for w in gw.getWindowsWithTitle('Edge') if w.isActive is False]
     time.sleep(0.5)
